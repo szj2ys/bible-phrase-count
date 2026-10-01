@@ -1,0 +1,11 @@
+{
+  "name": "bible-phrase-count",
+  "version": "1.0.0",
+  "description": "Reproducible phrase counting for verse-indexed public-domain Bible text. The matching rule is part of the output.",
+  "type": "module",
+  "main": "count.mjs",
+  "bin": { "bible-phrase-count": "count.mjs" },
+  "license": "MIT",
+  "keywords": ["bible", "kjv", "text-analysis", "nlp", "concordance", "dataset"],
+  "scripts": { "test": "node test.mjs" }
+}

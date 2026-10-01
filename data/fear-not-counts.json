@@ -1,0 +1,2107 @@
+{
+  "meta": {
+    "generatedAt": "2026-09-30",
+    "script": "scripts/generate-fear-not-counts.ts",
+    "corpora": {
+      "en": {
+        "label": "King James Version (KJV)",
+        "file": "data/kjv.jsonl.gz",
+        "verses": 31102,
+        "books": 66
+      },
+      "zh": {
+        "label": "Chinese Union Version, simplified (和合本)",
+        "file": "data/cuv-simplified.jsonl",
+        "verses": 31100,
+        "books": 66
+      }
+    },
+    "method": "A verse is counted once per rule if its text matches that rule's phrase (case-insensitive literal text; no lemmatisation, no stemming). Repeated occurrences inside one verse count once. Rules are reported separately, never silently merged.",
+    "unit": "verses (not occurrences)",
+    "reconciliation": {
+      "exactFearNotKjv": 62,
+      "inflectedFearNotKjv": 8,
+      "exactPlusInflected": 70,
+      "note": "The most-quoted published figure for the exact KJV phrase is 71. Counting the exact phrase returns 62. Adding every inflected form (feared not / feareth not) returns 8 more, for 70. Seven of the 8 describe people who did NOT fear God - e.g. Luke 18:2 'which feared not God' - so they are rebukes, not 'do not be afraid' statements, and are reported separately, never merged into the count. The eighth, Psalm 78:53 'so that they feared not', is a statement that Israel was unafraid after God led them through the sea, which is why the line is reported separately rather than merged."
+    },
+    "context": {
+      "note": "Baselines that let the arithmetic be checked: how often the word 'fear' itself occurs, which sets the ceiling any 'fear not' count has to sit under.",
+      "kjvFearExactWord": {
+        "label": "fear (exact word)",
+        "verses": 385,
+        "occurrences": 400
+      },
+      "kjvFearStem": {
+        "label": "fear* (word-boundary stem; the five named forms cover 492 verses, the match also admits fearest, fearfully, fearfulness and the plural fears)",
+        "verses": 501,
+        "occurrences": 524
+      }
+    },
+    "booksWithOccurrences": {
+      "total": 66,
+      "en": 29,
+      "zh": 32
+    },
+    "rules": {
+      "en": [
+        {
+          "id": "fear-not",
+          "label": "fear not"
+        },
+        {
+          "id": "be-not-afraid",
+          "label": "be not afraid"
+        },
+        {
+          "id": "do-not-fear",
+          "label": "do not fear"
+        },
+        {
+          "id": "do-not-be-afraid",
+          "label": "do not be afraid"
+        },
+        {
+          "id": "fear-thou-not",
+          "label": "fear thou not"
+        },
+        {
+          "id": "be-not-dismayed",
+          "label": "be not dismayed"
+        },
+        {
+          "id": "fear-inflected",
+          "label": "feared not / feareth not (inflected)"
+        },
+        {
+          "id": "any-two",
+          "label": "fear not OR be not afraid"
+        }
+      ],
+      "zh": [
+        {
+          "id": "bu-yao-pa",
+          "label": "不要怕"
+        },
+        {
+          "id": "bu-yao-ju-pa",
+          "label": "不要惧怕"
+        },
+        {
+          "id": "bu-yao-hai-pa",
+          "label": "不要害怕"
+        },
+        {
+          "id": "bu-yao-kong-ju",
+          "label": "不要恐惧"
+        },
+        {
+          "id": "any-four",
+          "label": "不要怕 OR 不要惧怕 OR 不要害怕 OR 不要恐惧"
+        }
+      ]
+    }
+  },
+  "counts": {
+    "en": {
+      "rules": [
+        {
+          "id": "fear-not",
+          "label": "fear not",
+          "verses": 62,
+          "ot": 48,
+          "nt": 14
+        },
+        {
+          "id": "be-not-afraid",
+          "label": "be not afraid",
+          "verses": 26,
+          "ot": 17,
+          "nt": 9
+        },
+        {
+          "id": "do-not-fear",
+          "label": "do not fear",
+          "verses": 0,
+          "ot": 0,
+          "nt": 0
+        },
+        {
+          "id": "do-not-be-afraid",
+          "label": "do not be afraid",
+          "verses": 0,
+          "ot": 0,
+          "nt": 0
+        },
+        {
+          "id": "fear-thou-not",
+          "label": "fear thou not",
+          "verses": 4,
+          "ot": 4,
+          "nt": 0
+        },
+        {
+          "id": "be-not-dismayed",
+          "label": "be not dismayed",
+          "verses": 4,
+          "ot": 4,
+          "nt": 0
+        },
+        {
+          "id": "fear-inflected",
+          "label": "feared not / feareth not (inflected)",
+          "verses": 8,
+          "ot": 7,
+          "nt": 1
+        }
+      ],
+      "union": {
+        "id": "any-two",
+        "label": "fear not OR be not afraid",
+        "verses": 88
+      }
+    },
+    "zh": {
+      "rules": [
+        {
+          "id": "bu-yao-pa",
+          "label": "不要怕",
+          "verses": 33,
+          "ot": 20,
+          "nt": 13
+        },
+        {
+          "id": "bu-yao-ju-pa",
+          "label": "不要惧怕",
+          "verses": 49,
+          "ot": 43,
+          "nt": 6
+        },
+        {
+          "id": "bu-yao-hai-pa",
+          "label": "不要害怕",
+          "verses": 19,
+          "ot": 14,
+          "nt": 5
+        },
+        {
+          "id": "bu-yao-kong-ju",
+          "label": "不要恐惧",
+          "verses": 3,
+          "ot": 3,
+          "nt": 0
+        }
+      ],
+      "union": {
+        "id": "any-four",
+        "label": "不要怕 OR 不要惧怕 OR 不要害怕 OR 不要恐惧",
+        "verses": 102
+      }
+    }
+  },
+  "verses": {
+    "en": [
+      {
+        "reference": "1 Chronicles 28:20",
+        "bookSlug": "1-chronicles",
+        "book": "1 Chronicles",
+        "bookZh": "历代志上",
+        "testament": "OT",
+        "chapter": 28,
+        "verse": 20,
+        "text": "And David said to Solomon his son, Be strong and of good courage, and do it: fear not, nor be dismayed: for the LORD God, even my God, will be with thee; he will not fail thee, nor forsake thee, until thou hast finished all the work for the service of the house of the LORD."
+      },
+      {
+        "reference": "1 Kings 17:13",
+        "bookSlug": "1-kings",
+        "book": "1 Kings",
+        "bookZh": "列王纪上",
+        "testament": "OT",
+        "chapter": 17,
+        "verse": 13,
+        "text": "And Elijah said unto her, Fear not; go and do as thou hast said: but make me thereof a little cake first, and bring it unto me, and after make for thee and for thy son."
+      },
+      {
+        "reference": "1 Peter 3:14",
+        "bookSlug": "1-peter",
+        "book": "1 Peter",
+        "bookZh": "彼得前书",
+        "testament": "NT",
+        "chapter": 3,
+        "verse": 14,
+        "text": "But and if ye suffer for righteousness’ sake, happy are ye: and be not afraid of their terror, neither be troubled;"
+      },
+      {
+        "reference": "1 Samuel 12:20",
+        "bookSlug": "1-samuel",
+        "book": "1 Samuel",
+        "bookZh": "撒母耳记上",
+        "testament": "OT",
+        "chapter": 12,
+        "verse": 20,
+        "text": "And Samuel said unto the people, Fear not: ye have done all this wickedness: yet turn not aside from following the LORD, but serve the LORD with all your heart;"
+      },
+      {
+        "reference": "1 Samuel 22:23",
+        "bookSlug": "1-samuel",
+        "book": "1 Samuel",
+        "bookZh": "撒母耳记上",
+        "testament": "OT",
+        "chapter": 22,
+        "verse": 23,
+        "text": "Abide thou with me, fear not: for he that seeketh my life seeketh thy life: but with me thou shalt be in safeguard."
+      },
+      {
+        "reference": "1 Samuel 23:17",
+        "bookSlug": "1-samuel",
+        "book": "1 Samuel",
+        "bookZh": "撒母耳记上",
+        "testament": "OT",
+        "chapter": 23,
+        "verse": 17,
+        "text": "And he said unto him, Fear not: for the hand of Saul my father shall not find thee; and thou shalt be king over Israel, and I shall be next unto thee; and that also Saul my father knoweth."
+      },
+      {
+        "reference": "1 Samuel 28:13",
+        "bookSlug": "1-samuel",
+        "book": "1 Samuel",
+        "bookZh": "撒母耳记上",
+        "testament": "OT",
+        "chapter": 28,
+        "verse": 13,
+        "text": "And the king said unto her, Be not afraid: for what sawest thou? And the woman said unto Saul, I saw gods ascending out of the earth."
+      },
+      {
+        "reference": "1 Samuel 4:20",
+        "bookSlug": "1-samuel",
+        "book": "1 Samuel",
+        "bookZh": "撒母耳记上",
+        "testament": "OT",
+        "chapter": 4,
+        "verse": 20,
+        "text": "And about the time of her death the women that stood by her said unto her, Fear not; for thou hast born a son. But she answered not, neither did she regard it."
+      },
+      {
+        "reference": "2 Chronicles 20:15",
+        "bookSlug": "2-chronicles",
+        "book": "2 Chronicles",
+        "bookZh": "历代志下",
+        "testament": "OT",
+        "chapter": 20,
+        "verse": 15,
+        "text": "And he said, Hearken ye, all Judah, and ye inhabitants of Jerusalem, and thou king Jehoshaphat, Thus saith the LORD unto you, Be not afraid nor dismayed by reason of this great multitude; for the battle is not yours, but God’s."
+      },
+      {
+        "reference": "2 Chronicles 20:17",
+        "bookSlug": "2-chronicles",
+        "book": "2 Chronicles",
+        "bookZh": "历代志下",
+        "testament": "OT",
+        "chapter": 20,
+        "verse": 17,
+        "text": "Ye shall not need to fight in this battle: set yourselves, stand ye still, and see the salvation of the LORD with you, O Judah and Jerusalem: fear not, nor be dismayed; to morrow go out against them: for the LORD will be with you."
+      },
+      {
+        "reference": "2 Chronicles 32:7",
+        "bookSlug": "2-chronicles",
+        "book": "2 Chronicles",
+        "bookZh": "历代志下",
+        "testament": "OT",
+        "chapter": 32,
+        "verse": 7,
+        "text": "Be strong and courageous, be not afraid nor dismayed for the king of Assyria, nor for all the multitude that is with him: for there be more with us than with him:"
+      },
+      {
+        "reference": "2 Kings 1:15",
+        "bookSlug": "2-kings",
+        "book": "2 Kings",
+        "bookZh": "列王纪下",
+        "testament": "OT",
+        "chapter": 1,
+        "verse": 15,
+        "text": "And the angel of the LORD said unto Elijah, Go down with him: be not afraid of him. And he arose, and went down with him unto the king."
+      },
+      {
+        "reference": "2 Kings 17:34",
+        "bookSlug": "2-kings",
+        "book": "2 Kings",
+        "bookZh": "列王纪下",
+        "testament": "OT",
+        "chapter": 17,
+        "verse": 34,
+        "text": "Unto this day they do after the former manners: they fear not the LORD, neither do they after their statutes, or after their ordinances, or after the law and commandment which the LORD commanded the children of Jacob, whom he named Israel;"
+      },
+      {
+        "reference": "2 Kings 19:6",
+        "bookSlug": "2-kings",
+        "book": "2 Kings",
+        "bookZh": "列王纪下",
+        "testament": "OT",
+        "chapter": 19,
+        "verse": 6,
+        "text": "And Isaiah said unto them, Thus shall ye say to your master, Thus saith the LORD, Be not afraid of the words which thou hast heard, with which the servants of the king of Assyria have blasphemed me."
+      },
+      {
+        "reference": "2 Kings 25:24",
+        "bookSlug": "2-kings",
+        "book": "2 Kings",
+        "bookZh": "列王纪下",
+        "testament": "OT",
+        "chapter": 25,
+        "verse": 24,
+        "text": "And Gedaliah sware to them, and to their men, and said unto them, Fear not to be the servants of the Chaldees: dwell in the land, and serve the king of Babylon; and it shall be well with you."
+      },
+      {
+        "reference": "2 Kings 6:16",
+        "bookSlug": "2-kings",
+        "book": "2 Kings",
+        "bookZh": "列王纪下",
+        "testament": "OT",
+        "chapter": 6,
+        "verse": 16,
+        "text": "And he answered, Fear not: for they that be with us are more than they that be with them."
+      },
+      {
+        "reference": "2 Samuel 13:28",
+        "bookSlug": "2-samuel",
+        "book": "2 Samuel",
+        "bookZh": "撒母耳记下",
+        "testament": "OT",
+        "chapter": 13,
+        "verse": 28,
+        "text": "Now Absalom had commanded his servants, saying, Mark ye now when Amnon’s heart is merry with wine, and when I say unto you, Smite Amnon; then kill him, fear not: have not I commanded you? be courageous, and be valiant."
+      },
+      {
+        "reference": "2 Samuel 9:7",
+        "bookSlug": "2-samuel",
+        "book": "2 Samuel",
+        "bookZh": "撒母耳记下",
+        "testament": "OT",
+        "chapter": 9,
+        "verse": 7,
+        "text": "And David said unto him, Fear not: for I will surely shew thee kindness for Jonathan thy father’s sake, and will restore thee all the land of Saul thy father; and thou shalt eat bread at my table continually."
+      },
+      {
+        "reference": "Acts 18:9",
+        "bookSlug": "acts",
+        "book": "Acts",
+        "bookZh": "使徒行传",
+        "testament": "NT",
+        "chapter": 18,
+        "verse": 9,
+        "text": "Then spake the Lord to Paul in the night by a vision, Be not afraid, but speak, and hold not thy peace:"
+      },
+      {
+        "reference": "Acts 27:24",
+        "bookSlug": "acts",
+        "book": "Acts",
+        "bookZh": "使徒行传",
+        "testament": "NT",
+        "chapter": 27,
+        "verse": 24,
+        "text": "Saying, Fear not, Paul; thou must be brought before Caesar: and, lo, God hath given thee all them that sail with thee."
+      },
+      {
+        "reference": "Daniel 10:12",
+        "bookSlug": "daniel",
+        "book": "Daniel",
+        "bookZh": "但以理书",
+        "testament": "OT",
+        "chapter": 10,
+        "verse": 12,
+        "text": "Then said he unto me, Fear not, Daniel: for from the first day that thou didst set thine heart to understand, and to chasten thyself before thy God, thy words were heard, and I am come for thy words."
+      },
+      {
+        "reference": "Daniel 10:19",
+        "bookSlug": "daniel",
+        "book": "Daniel",
+        "bookZh": "但以理书",
+        "testament": "OT",
+        "chapter": 10,
+        "verse": 19,
+        "text": "And said, O man greatly beloved, fear not: peace be unto thee, be strong, yea, be strong. And when he had spoken unto me, I was strengthened, and said, Let my lord speak; for thou hast strengthened me."
+      },
+      {
+        "reference": "Deuteronomy 1:21",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 1,
+        "verse": 21,
+        "text": "Behold, the LORD thy God hath set the land before thee: go up and possess it, as the LORD God of thy fathers hath said unto thee; fear not, neither be discouraged."
+      },
+      {
+        "reference": "Deuteronomy 20:1",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 20,
+        "verse": 1,
+        "text": "When thou goest out to battle against thine enemies, and seest horses, and chariots, and a people more than thou, be not afraid of them: for the LORD thy God is with thee, which brought thee up out of the land of Egypt."
+      },
+      {
+        "reference": "Deuteronomy 20:3",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 20,
+        "verse": 3,
+        "text": "And shall say unto them, Hear, O Israel, ye approach this day unto battle against your enemies: let not your hearts faint, fear not, and do not tremble, neither be ye terrified because of them;"
+      },
+      {
+        "reference": "Deuteronomy 31:6",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 31,
+        "verse": 6,
+        "text": "Be strong and of a good courage, fear not, nor be afraid of them: for the LORD thy God, he it is that doth go with thee; he will not fail thee, nor forsake thee."
+      },
+      {
+        "reference": "Deuteronomy 31:8",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 31,
+        "verse": 8,
+        "text": "And the LORD, he it is that doth go before thee; he will be with thee, he will not fail thee, neither forsake thee: fear not, neither be dismayed."
+      },
+      {
+        "reference": "Exodus 20:20",
+        "bookSlug": "exodus",
+        "book": "Exodus",
+        "bookZh": "出埃及记",
+        "testament": "OT",
+        "chapter": 20,
+        "verse": 20,
+        "text": "And Moses said unto the people, Fear not: for God is come to prove you, and that his fear may be before your faces, that ye sin not."
+      },
+      {
+        "reference": "Ezekiel 2:6",
+        "bookSlug": "ezekiel",
+        "book": "Ezekiel",
+        "bookZh": "以西结书",
+        "testament": "OT",
+        "chapter": 2,
+        "verse": 6,
+        "text": "And thou, son of man, be not afraid of them, neither be afraid of their words, though briers and thorns be with thee, and thou dost dwell among scorpions: be not afraid of their words, nor be dismayed at their looks, though they be a rebellious house."
+      },
+      {
+        "reference": "Genesis 15:1",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 15,
+        "verse": 1,
+        "text": "After these things the word of the LORD came unto Abram in a vision, saying, Fear not, Abram: I am thy shield, and thy exceeding great reward."
+      },
+      {
+        "reference": "Genesis 21:17",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 21,
+        "verse": 17,
+        "text": "And God heard the voice of the lad; and the angel of God called to Hagar out of heaven, and said unto her, What aileth thee, Hagar? fear not; for God hath heard the voice of the lad where he is."
+      },
+      {
+        "reference": "Genesis 26:24",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 26,
+        "verse": 24,
+        "text": "And the LORD appeared unto him the same night, and said, I am the God of Abraham thy father: fear not, for I am with thee, and will bless thee, and multiply thy seed for my servant Abraham’s sake."
+      },
+      {
+        "reference": "Genesis 35:17",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 35,
+        "verse": 17,
+        "text": "And it came to pass, when she was in hard labour, that the midwife said unto her, Fear not; thou shalt have this son also."
+      },
+      {
+        "reference": "Genesis 43:23",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 43,
+        "verse": 23,
+        "text": "And he said, Peace be to you, fear not: your God, and the God of your father, hath given you treasure in your sacks: I had your money. And he brought Simeon out unto them."
+      },
+      {
+        "reference": "Genesis 46:3",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 46,
+        "verse": 3,
+        "text": "And he said, I am God, the God of thy father: fear not to go down into Egypt; for I will there make of thee a great nation:"
+      },
+      {
+        "reference": "Genesis 50:19",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 50,
+        "verse": 19,
+        "text": "And Joseph said unto them, Fear not: for am I in the place of God?"
+      },
+      {
+        "reference": "Isaiah 10:24",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 10,
+        "verse": 24,
+        "text": "Therefore thus saith the Lord GOD of hosts, O my people that dwellest in Zion, be not afraid of the Assyrian: he shall smite thee with a rod, and shall lift up his staff against thee, after the manner of Egypt."
+      },
+      {
+        "reference": "Isaiah 35:4",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 35,
+        "verse": 4,
+        "text": "Say to them that are of a fearful heart, Be strong, fear not: behold, your God will come with vengeance, even God with a recompence; he will come and save you."
+      },
+      {
+        "reference": "Isaiah 37:6",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 37,
+        "verse": 6,
+        "text": "And Isaiah said unto them, Thus shall ye say unto your master, Thus saith the LORD, Be not afraid of the words that thou hast heard, wherewith the servants of the king of Assyria have blasphemed me."
+      },
+      {
+        "reference": "Isaiah 40:9",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 40,
+        "verse": 9,
+        "text": "O Zion, that bringest good tidings, get thee up into the high mountain; O Jerusalem, that bringest good tidings, lift up thy voice with strength; lift it up, be not afraid; say unto the cities of Judah, Behold your God!"
+      },
+      {
+        "reference": "Isaiah 41:13",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 41,
+        "verse": 13,
+        "text": "For I the LORD thy God will hold thy right hand, saying unto thee, Fear not; I will help thee."
+      },
+      {
+        "reference": "Isaiah 41:14",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 41,
+        "verse": 14,
+        "text": "Fear not, thou worm Jacob, and ye men of Israel; I will help thee, saith the LORD, and thy redeemer, the Holy One of Israel."
+      },
+      {
+        "reference": "Isaiah 43:1",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 43,
+        "verse": 1,
+        "text": "But now thus saith the LORD that created thee, O Jacob, and he that formed thee, O Israel, Fear not: for I have redeemed thee, I have called thee by thy name; thou art mine."
+      },
+      {
+        "reference": "Isaiah 43:5",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 43,
+        "verse": 5,
+        "text": "Fear not: for I am with thee: I will bring thy seed from the east, and gather thee from the west;"
+      },
+      {
+        "reference": "Isaiah 44:2",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 44,
+        "verse": 2,
+        "text": "Thus saith the LORD that made thee, and formed thee from the womb, which will help thee; Fear not, O Jacob, my servant; and thou, Jesurun, whom I have chosen."
+      },
+      {
+        "reference": "Isaiah 54:4",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 54,
+        "verse": 4,
+        "text": "Fear not; for thou shalt not be ashamed: neither be thou confounded; for thou shalt not be put to shame: for thou shalt forget the shame of thy youth, and shalt not remember the reproach of thy widowhood any more."
+      },
+      {
+        "reference": "Isaiah 7:4",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 7,
+        "verse": 4,
+        "text": "And say unto him, Take heed, and be quiet; fear not, neither be fainthearted for the two tails of these smoking firebrands, for the fierce anger of Rezin with Syria, and of the son of Remaliah."
+      },
+      {
+        "reference": "Jeremiah 1:8",
+        "bookSlug": "jeremiah",
+        "book": "Jeremiah",
+        "bookZh": "耶利米书",
+        "testament": "OT",
+        "chapter": 1,
+        "verse": 8,
+        "text": "Be not afraid of their faces: for I am with thee to deliver thee, saith the LORD."
+      },
+      {
+        "reference": "Jeremiah 10:5",
+        "bookSlug": "jeremiah",
+        "book": "Jeremiah",
+        "bookZh": "耶利米书",
+        "testament": "OT",
+        "chapter": 10,
+        "verse": 5,
+        "text": "They are upright as the palm tree, but speak not: they must needs be borne, because they cannot go. Be not afraid of them; for they cannot do evil, neither also is it in them to do good."
+      },
+      {
+        "reference": "Jeremiah 40:9",
+        "bookSlug": "jeremiah",
+        "book": "Jeremiah",
+        "bookZh": "耶利米书",
+        "testament": "OT",
+        "chapter": 40,
+        "verse": 9,
+        "text": "And Gedaliah the son of Ahikam the son of Shaphan sware unto them and to their men, saying, Fear not to serve the Chaldeans: dwell in the land, and serve the king of Babylon, and it shall be well with you."
+      },
+      {
+        "reference": "Jeremiah 42:11",
+        "bookSlug": "jeremiah",
+        "book": "Jeremiah",
+        "bookZh": "耶利米书",
+        "testament": "OT",
+        "chapter": 42,
+        "verse": 11,
+        "text": "Be not afraid of the king of Babylon, of whom ye are afraid; be not afraid of him, saith the LORD: for I am with you to save you, and to deliver you from his hand."
+      },
+      {
+        "reference": "Jeremiah 46:27",
+        "bookSlug": "jeremiah",
+        "book": "Jeremiah",
+        "bookZh": "耶利米书",
+        "testament": "OT",
+        "chapter": 46,
+        "verse": 27,
+        "text": "But fear not thou, O my servant Jacob, and be not dismayed, O Israel: for, behold, I will save thee from afar off, and thy seed from the land of their captivity; and Jacob shall return, and be in rest and at ease, and none shall make him afraid."
+      },
+      {
+        "reference": "Joel 2:21",
+        "bookSlug": "joel",
+        "book": "Joel",
+        "bookZh": "约珥书",
+        "testament": "OT",
+        "chapter": 2,
+        "verse": 21,
+        "text": "Fear not, O land; be glad and rejoice: for the LORD will do great things."
+      },
+      {
+        "reference": "Joel 2:22",
+        "bookSlug": "joel",
+        "book": "Joel",
+        "bookZh": "约珥书",
+        "testament": "OT",
+        "chapter": 2,
+        "verse": 22,
+        "text": "Be not afraid, ye beasts of the field: for the pastures of the wilderness do spring, for the tree beareth her fruit, the fig tree and the vine do yield their strength."
+      },
+      {
+        "reference": "John 12:15",
+        "bookSlug": "john",
+        "book": "John",
+        "bookZh": "约翰福音",
+        "testament": "NT",
+        "chapter": 12,
+        "verse": 15,
+        "text": "Fear not, daughter of Sion: behold, thy King cometh, sitting on an ass’s colt."
+      },
+      {
+        "reference": "John 6:20",
+        "bookSlug": "john",
+        "book": "John",
+        "bookZh": "约翰福音",
+        "testament": "NT",
+        "chapter": 6,
+        "verse": 20,
+        "text": "But he saith unto them, It is I; be not afraid."
+      },
+      {
+        "reference": "Joshua 1:9",
+        "bookSlug": "joshua",
+        "book": "Joshua",
+        "bookZh": "约书亚记",
+        "testament": "OT",
+        "chapter": 1,
+        "verse": 9,
+        "text": "Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest."
+      },
+      {
+        "reference": "Joshua 10:25",
+        "bookSlug": "joshua",
+        "book": "Joshua",
+        "bookZh": "约书亚记",
+        "testament": "OT",
+        "chapter": 10,
+        "verse": 25,
+        "text": "And Joshua said unto them, Fear not, nor be dismayed, be strong and of good courage: for thus shall the LORD do to all your enemies against whom ye fight."
+      },
+      {
+        "reference": "Joshua 11:6",
+        "bookSlug": "joshua",
+        "book": "Joshua",
+        "bookZh": "约书亚记",
+        "testament": "OT",
+        "chapter": 11,
+        "verse": 6,
+        "text": "And the LORD said unto Joshua, Be not afraid because of them: for to morrow about this time will I deliver them up all slain before Israel: thou shalt hough their horses, and burn their chariots with fire."
+      },
+      {
+        "reference": "Joshua 8:1",
+        "bookSlug": "joshua",
+        "book": "Joshua",
+        "bookZh": "约书亚记",
+        "testament": "OT",
+        "chapter": 8,
+        "verse": 1,
+        "text": "And the LORD said unto Joshua, Fear not, neither be thou dismayed: take all the people of war with thee, and arise, go up to Ai: see, I have given into thy hand the king of Ai, and his people, and his city, and his land:"
+      },
+      {
+        "reference": "Judges 4:18",
+        "bookSlug": "judges",
+        "book": "Judges",
+        "bookZh": "士师记",
+        "testament": "OT",
+        "chapter": 4,
+        "verse": 18,
+        "text": "And Jael went out to meet Sisera, and said unto him, Turn in, my lord, turn in to me; fear not. And when he had turned in unto her into the tent, she covered him with a mantle."
+      },
+      {
+        "reference": "Judges 6:10",
+        "bookSlug": "judges",
+        "book": "Judges",
+        "bookZh": "士师记",
+        "testament": "OT",
+        "chapter": 6,
+        "verse": 10,
+        "text": "And I said unto you, I am the LORD your God; fear not the gods of the Amorites, in whose land ye dwell: but ye have not obeyed my voice."
+      },
+      {
+        "reference": "Judges 6:23",
+        "bookSlug": "judges",
+        "book": "Judges",
+        "bookZh": "士师记",
+        "testament": "OT",
+        "chapter": 6,
+        "verse": 23,
+        "text": "And the LORD said unto him, Peace be unto thee; fear not: thou shalt not die."
+      },
+      {
+        "reference": "Lamentations 3:57",
+        "bookSlug": "lamentations",
+        "book": "Lamentations",
+        "bookZh": "耶利米哀歌",
+        "testament": "OT",
+        "chapter": 3,
+        "verse": 57,
+        "text": "Thou drewest near in the day that I called upon thee: thou saidst, Fear not."
+      },
+      {
+        "reference": "Luke 1:13",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 1,
+        "verse": 13,
+        "text": "But the angel said unto him, Fear not, Zacharias: for thy prayer is heard; and thy wife Elisabeth shall bear thee a son, and thou shalt call his name John."
+      },
+      {
+        "reference": "Luke 1:30",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 1,
+        "verse": 30,
+        "text": "And the angel said unto her, Fear not, Mary: for thou hast found favour with God."
+      },
+      {
+        "reference": "Luke 12:32",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 12,
+        "verse": 32,
+        "text": "Fear not, little flock; for it is your Father’s good pleasure to give you the kingdom."
+      },
+      {
+        "reference": "Luke 12:4",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 12,
+        "verse": 4,
+        "text": "And I say unto you my friends, Be not afraid of them that kill the body, and after that have no more that they can do."
+      },
+      {
+        "reference": "Luke 12:7",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 12,
+        "verse": 7,
+        "text": "But even the very hairs of your head are all numbered. Fear not therefore: ye are of more value than many sparrows."
+      },
+      {
+        "reference": "Luke 18:4",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 18,
+        "verse": 4,
+        "text": "And he would not for a while: but afterward he said within himself, Though I fear not God, nor regard man;"
+      },
+      {
+        "reference": "Luke 2:10",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 2,
+        "verse": 10,
+        "text": "And the angel said unto them, Fear not: for, behold, I bring you good tidings of great joy, which shall be to all people."
+      },
+      {
+        "reference": "Luke 5:10",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 5,
+        "verse": 10,
+        "text": "And so was also James, and John, the sons of Zebedee, which were partners with Simon. And Jesus said unto Simon, Fear not; from henceforth thou shalt catch men."
+      },
+      {
+        "reference": "Luke 8:50",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 8,
+        "verse": 50,
+        "text": "But when Jesus heard it, he answered him, saying, Fear not: believe only, and she shall be made whole."
+      },
+      {
+        "reference": "Malachi 3:5",
+        "bookSlug": "malachi",
+        "book": "Malachi",
+        "bookZh": "玛拉基书",
+        "testament": "OT",
+        "chapter": 3,
+        "verse": 5,
+        "text": "And I will come near to you to judgment; and I will be a swift witness against the sorcerers, and against the adulterers, and against false swearers, and against those that oppress the hireling in his wages, the widow, and the fatherless, and that turn aside the stranger from his right, and fear not me, saith the LORD of hosts."
+      },
+      {
+        "reference": "Mark 5:36",
+        "bookSlug": "mark",
+        "book": "Mark",
+        "bookZh": "马可福音",
+        "testament": "NT",
+        "chapter": 5,
+        "verse": 36,
+        "text": "As soon as Jesus heard the word that was spoken, he saith unto the ruler of the synagogue, Be not afraid, only believe."
+      },
+      {
+        "reference": "Mark 6:50",
+        "bookSlug": "mark",
+        "book": "Mark",
+        "bookZh": "马可福音",
+        "testament": "NT",
+        "chapter": 6,
+        "verse": 50,
+        "text": "For they all saw him, and were troubled. And immediately he talked with them, and saith unto them, Be of good cheer: it is I; be not afraid."
+      },
+      {
+        "reference": "Matthew 1:20",
+        "bookSlug": "matthew",
+        "book": "Matthew",
+        "bookZh": "马太福音",
+        "testament": "NT",
+        "chapter": 1,
+        "verse": 20,
+        "text": "But while he thought on these things, behold, the angel of the LORD appeared unto him in a dream, saying, Joseph, thou son of David, fear not to take unto thee Mary thy wife: for that which is conceived in her is of the Holy Ghost."
+      },
+      {
+        "reference": "Matthew 10:28",
+        "bookSlug": "matthew",
+        "book": "Matthew",
+        "bookZh": "马太福音",
+        "testament": "NT",
+        "chapter": 10,
+        "verse": 28,
+        "text": "And fear not them which kill the body, but are not able to kill the soul: but rather fear him which is able to destroy both soul and body in hell."
+      },
+      {
+        "reference": "Matthew 14:27",
+        "bookSlug": "matthew",
+        "book": "Matthew",
+        "bookZh": "马太福音",
+        "testament": "NT",
+        "chapter": 14,
+        "verse": 27,
+        "text": "But straightway Jesus spake unto them, saying, Be of good cheer; it is I; be not afraid."
+      },
+      {
+        "reference": "Matthew 17:7",
+        "bookSlug": "matthew",
+        "book": "Matthew",
+        "bookZh": "马太福音",
+        "testament": "NT",
+        "chapter": 17,
+        "verse": 7,
+        "text": "And Jesus came and touched them, and said, Arise, and be not afraid."
+      },
+      {
+        "reference": "Matthew 28:10",
+        "bookSlug": "matthew",
+        "book": "Matthew",
+        "bookZh": "马太福音",
+        "testament": "NT",
+        "chapter": 28,
+        "verse": 10,
+        "text": "Then said Jesus unto them, Be not afraid: go tell my brethren that they go into Galilee, and there shall they see me."
+      },
+      {
+        "reference": "Matthew 28:5",
+        "bookSlug": "matthew",
+        "book": "Matthew",
+        "bookZh": "马太福音",
+        "testament": "NT",
+        "chapter": 28,
+        "verse": 5,
+        "text": "And the angel answered and said unto the women, Fear not ye: for I know that ye seek Jesus, which was crucified."
+      },
+      {
+        "reference": "Proverbs 3:25",
+        "bookSlug": "proverbs",
+        "book": "Proverbs",
+        "bookZh": "箴言",
+        "testament": "OT",
+        "chapter": 3,
+        "verse": 25,
+        "text": "Be not afraid of sudden fear, neither of the desolation of the wicked, when it cometh."
+      },
+      {
+        "reference": "Psalms 55:19",
+        "bookSlug": "psalms",
+        "book": "Psalms",
+        "bookZh": "诗篇",
+        "testament": "OT",
+        "chapter": 55,
+        "verse": 19,
+        "text": "God shall hear, and afflict them, even he that abideth of old. Selah. Because they have no changes, therefore they fear not God."
+      },
+      {
+        "reference": "Psalms 64:4",
+        "bookSlug": "psalms",
+        "book": "Psalms",
+        "bookZh": "诗篇",
+        "testament": "OT",
+        "chapter": 64,
+        "verse": 4,
+        "text": "That they may shoot in secret at the perfect: suddenly do they shoot at him, and fear not."
+      },
+      {
+        "reference": "Revelation 1:17",
+        "bookSlug": "revelation",
+        "book": "Revelation",
+        "bookZh": "启示录",
+        "testament": "NT",
+        "chapter": 1,
+        "verse": 17,
+        "text": "And when I saw him, I fell at his feet as dead. And he laid his right hand upon me, saying unto me, Fear not; I am the first and the last:"
+      },
+      {
+        "reference": "Ruth 3:11",
+        "bookSlug": "ruth",
+        "book": "Ruth",
+        "bookZh": "路得记",
+        "testament": "OT",
+        "chapter": 3,
+        "verse": 11,
+        "text": "And now, my daughter, fear not; I will do to thee all that thou requirest: for all the city of my people doth know that thou art a virtuous woman."
+      },
+      {
+        "reference": "Zechariah 8:13",
+        "bookSlug": "zechariah",
+        "book": "Zechariah",
+        "bookZh": "撒迦利亚书",
+        "testament": "OT",
+        "chapter": 8,
+        "verse": 13,
+        "text": "And it shall come to pass, that as ye were a curse among the heathen, O house of Judah, and house of Israel; so will I save you, and ye shall be a blessing: fear not, but let your hands be strong."
+      }
+    ],
+    "zh": [
+      {
+        "reference": "1 Chronicles 22:12",
+        "bookSlug": "1-chronicles",
+        "book": "1 Chronicles",
+        "bookZh": "历代志上",
+        "testament": "OT",
+        "chapter": 22,
+        "verse": 12,
+        "text": "你若谨守遵行耶和华藉摩西吩咐以色列的律例典章，就得亨通。你当刚强壮胆，不要惧怕，也不要惊惶。"
+      },
+      {
+        "reference": "1 Chronicles 28:20",
+        "bookSlug": "1-chronicles",
+        "book": "1 Chronicles",
+        "bookZh": "历代志上",
+        "testament": "OT",
+        "chapter": 28,
+        "verse": 20,
+        "text": "大卫又对他儿子所罗门说：「你当刚强壮胆去行！不要惧怕，也不要惊惶。因为耶和华神就是我的神，与你同在；他必不撇下你，也不丢弃你，直到耶和华殿的工作都完毕了。"
+      },
+      {
+        "reference": "1 Kings 17:13",
+        "bookSlug": "1-kings",
+        "book": "1 Kings",
+        "bookZh": "列王纪上",
+        "testament": "OT",
+        "chapter": 17,
+        "verse": 13,
+        "text": "以利亚对她说：「不要惧怕！可以照你所说的去作吧！只要先为我作一个小饼拿来给我，然后为你和你的儿子作饼。"
+      },
+      {
+        "reference": "1 Peter 3:14",
+        "bookSlug": "1-peter",
+        "book": "1 Peter",
+        "bookZh": "彼得前书",
+        "testament": "NT",
+        "chapter": 3,
+        "verse": 14,
+        "text": "你们就是为义受苦，也是有福的。不要怕人的威吓〔的威吓：或作所怕的〕，也不要惊慌；"
+      },
+      {
+        "reference": "1 Samuel 12:20",
+        "bookSlug": "1-samuel",
+        "book": "1 Samuel",
+        "bookZh": "撒母耳记上",
+        "testament": "OT",
+        "chapter": 12,
+        "verse": 20,
+        "text": "撒母耳对百姓说：「不要惧怕！你们虽然行了这恶，却不要偏离耶和华，只要尽心事奉他。"
+      },
+      {
+        "reference": "1 Samuel 22:23",
+        "bookSlug": "1-samuel",
+        "book": "1 Samuel",
+        "bookZh": "撒母耳记上",
+        "testament": "OT",
+        "chapter": 22,
+        "verse": 23,
+        "text": "你可以住在我这里，不要惧怕。因为寻索你命的就是寻索我的命；你在我这里可得保全。」"
+      },
+      {
+        "reference": "1 Samuel 23:17",
+        "bookSlug": "1-samuel",
+        "book": "1 Samuel",
+        "bookZh": "撒母耳记上",
+        "testament": "OT",
+        "chapter": 23,
+        "verse": 17,
+        "text": "对他说：「不要惧怕！我父扫罗的手必不加害于你；你必作以色列的王，我也作你的宰相。这事我父扫罗知道了。」"
+      },
+      {
+        "reference": "1 Samuel 28:13",
+        "bookSlug": "1-samuel",
+        "book": "1 Samuel",
+        "bookZh": "撒母耳记上",
+        "testament": "OT",
+        "chapter": 28,
+        "verse": 13,
+        "text": "王对妇人说：「不要惧怕，你看见了甚么呢？」妇人对扫罗说：「我看见有神从地里上来。」"
+      },
+      {
+        "reference": "1 Samuel 4:20",
+        "bookSlug": "1-samuel",
+        "book": "1 Samuel",
+        "bookZh": "撒母耳记上",
+        "testament": "OT",
+        "chapter": 4,
+        "verse": 20,
+        "text": "将要死的时候，旁边站着的妇人们对她说：「不要怕！你生了男孩子了。」她却不回答，也不放在心上。"
+      },
+      {
+        "reference": "2 Chronicles 20:17",
+        "bookSlug": "2-chronicles",
+        "book": "2 Chronicles",
+        "bookZh": "历代志下",
+        "testament": "OT",
+        "chapter": 20,
+        "verse": 17,
+        "text": "犹大和耶路撒冷人哪，这次你们不要争战，要摆阵站着，看耶和华为你们施行拯救。不要恐惧，也不要惊惶。明日当出去迎敌，因为耶和华与你们同在。』」"
+      },
+      {
+        "reference": "2 Kings 1:15",
+        "bookSlug": "2-kings",
+        "book": "2 Kings",
+        "bookZh": "列王纪下",
+        "testament": "OT",
+        "chapter": 1,
+        "verse": 15,
+        "text": "耶和华的使者对以利亚说：「你同着他下去，不要怕他！」以利亚就起来，同着他下去见王，"
+      },
+      {
+        "reference": "2 Kings 19:6",
+        "bookSlug": "2-kings",
+        "book": "2 Kings",
+        "bookZh": "列王纪下",
+        "testament": "OT",
+        "chapter": 19,
+        "verse": 6,
+        "text": "以赛亚对他们说：「要这样对你们的主人说，耶和华如此说：『你听见亚述王的仆人亵渎我的话，不要惧怕。"
+      },
+      {
+        "reference": "2 Kings 6:16",
+        "bookSlug": "2-kings",
+        "book": "2 Kings",
+        "bookZh": "列王纪下",
+        "testament": "OT",
+        "chapter": 6,
+        "verse": 16,
+        "text": "神人说：「不要惧怕！与我们同在的比与他们同在的更多。」"
+      },
+      {
+        "reference": "2 Samuel 13:28",
+        "bookSlug": "2-samuel",
+        "book": "2 Samuel",
+        "bookZh": "撒母耳记下",
+        "testament": "OT",
+        "chapter": 13,
+        "verse": 28,
+        "text": "押沙龙吩咐仆人说：「你们注意，看暗嫩饮酒畅快的时候，我对你们说杀暗嫩，你们便杀他，不要惧怕。这不是我吩咐你们的么？你们只管壮胆奋勇！」"
+      },
+      {
+        "reference": "2 Samuel 9:7",
+        "bookSlug": "2-samuel",
+        "book": "2 Samuel",
+        "bookZh": "撒母耳记下",
+        "testament": "OT",
+        "chapter": 9,
+        "verse": 7,
+        "text": "大卫说：「你不要惧怕，我必因你父亲约拿单的缘故施恩与你，将你祖父扫罗的一切田地都归还你；你也可以常与我同席吃饭。」"
+      },
+      {
+        "reference": "Acts 18:9",
+        "bookSlug": "acts",
+        "book": "Acts",
+        "bookZh": "使徒行传",
+        "testament": "NT",
+        "chapter": 18,
+        "verse": 9,
+        "text": "夜间，主在异象中对保罗说：「不要怕，只管讲，不要闭口，"
+      },
+      {
+        "reference": "Acts 27:24",
+        "bookSlug": "acts",
+        "book": "Acts",
+        "bookZh": "使徒行传",
+        "testament": "NT",
+        "chapter": 27,
+        "verse": 24,
+        "text": "『保罗，不要害怕，你必定站在该撒面前，并且与你同船的人，神都赐给你了。』"
+      },
+      {
+        "reference": "Daniel 10:12",
+        "bookSlug": "daniel",
+        "book": "Daniel",
+        "bookZh": "但以理书",
+        "testament": "OT",
+        "chapter": 10,
+        "verse": 12,
+        "text": "他就说：「但以理啊，不要惧怕！因为从你第一日专心求明白将来的事，又在你神面前刻苦己心，你的言语已蒙应允；我是因你的言语而来。"
+      },
+      {
+        "reference": "Daniel 10:19",
+        "bookSlug": "daniel",
+        "book": "Daniel",
+        "bookZh": "但以理书",
+        "testament": "OT",
+        "chapter": 10,
+        "verse": 19,
+        "text": "他说：「大蒙眷爱的人哪，不要惧怕，愿你平安！你总要坚强。」他一向我说话，我便觉得有力量，说：「我主请说，因你使我有力量。」"
+      },
+      {
+        "reference": "Deuteronomy 1:21",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 1,
+        "verse": 21,
+        "text": "看哪，耶和华你的神已将那地摆在你面前，你要照耶和华你列祖的神所说的上去得那地为业；不要惧怕，也不要惊惶。』"
+      },
+      {
+        "reference": "Deuteronomy 1:29",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 1,
+        "verse": 29,
+        "text": "我就对你们说：『不要惊恐，也不要怕他们。"
+      },
+      {
+        "reference": "Deuteronomy 18:22",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 18,
+        "verse": 22,
+        "text": "先知托耶和华的名说话，所说的若不成就，也无效验，这就是耶和华所未曾吩咐的，是那先知擅自说的，你不要怕他。」"
+      },
+      {
+        "reference": "Deuteronomy 20:1",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 20,
+        "verse": 1,
+        "text": "「你出去与仇敌争战的时候，看见马匹、车辆，并有比你多的人民，不要怕他们，因为领你出埃及地的耶和华你神与你同在。"
+      },
+      {
+        "reference": "Deuteronomy 20:3",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 20,
+        "verse": 3,
+        "text": "说：『以色列人哪，你们当听，你们今日将要与仇敌争战，不要胆怯，不要惧怕战兢，也不要因他们惊恐；"
+      },
+      {
+        "reference": "Deuteronomy 3:2",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 3,
+        "verse": 2,
+        "text": "耶和华对我说：『不要怕他！因我已将他和他的众民，并他的地，都交在你手中；你要待他像从前待住希实本的亚摩利王西宏一样。』"
+      },
+      {
+        "reference": "Deuteronomy 3:22",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 3,
+        "verse": 22,
+        "text": "你不要怕他们，因那为你争战的是耶和华你的神。』」"
+      },
+      {
+        "reference": "Deuteronomy 31:6",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 31,
+        "verse": 6,
+        "text": "你们当刚强壮胆，不要害怕，也不要畏惧他们，因为耶和华你的神和你同去。他必不撇下你，也不丢弃你。」"
+      },
+      {
+        "reference": "Deuteronomy 31:8",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 31,
+        "verse": 8,
+        "text": "耶和华必在你前面行；他必与你同在，必不撇下你，也不丢弃你。不要惧怕，也不要惊惶。」"
+      },
+      {
+        "reference": "Deuteronomy 7:18",
+        "bookSlug": "deuteronomy",
+        "book": "Deuteronomy",
+        "bookZh": "申命记",
+        "testament": "OT",
+        "chapter": 7,
+        "verse": 18,
+        "text": "你不要惧怕他们，要牢牢记念耶和华你神向法老和埃及全地所行的事，"
+      },
+      {
+        "reference": "Exodus 14:13",
+        "bookSlug": "exodus",
+        "book": "Exodus",
+        "bookZh": "出埃及记",
+        "testament": "OT",
+        "chapter": 14,
+        "verse": 13,
+        "text": "摩西对百姓说：「不要惧怕，只管站住！看耶和华今天向你们所要施行的救恩。因为，你们今天所看见的埃及人必永远不再看见了。"
+      },
+      {
+        "reference": "Exodus 20:20",
+        "bookSlug": "exodus",
+        "book": "Exodus",
+        "bookZh": "出埃及记",
+        "testament": "OT",
+        "chapter": 20,
+        "verse": 20,
+        "text": "摩西对百姓说：「不要惧怕；因为神降临是要试验你们，叫你们时常敬畏他，不至犯罪。」"
+      },
+      {
+        "reference": "Ezekiel 2:6",
+        "bookSlug": "ezekiel",
+        "book": "Ezekiel",
+        "bookZh": "以西结书",
+        "testament": "OT",
+        "chapter": 2,
+        "verse": 6,
+        "text": "人子啊，虽有荆棘和蒺藜在你那里，你又住在蝎子中间，总不要怕他们，也不要怕他们的话；他们虽是悖逆之家，还不要怕他们的话，也不要因他们的脸色惊惶。"
+      },
+      {
+        "reference": "Ezekiel 3:9",
+        "bookSlug": "ezekiel",
+        "book": "Ezekiel",
+        "bookZh": "以西结书",
+        "testament": "OT",
+        "chapter": 3,
+        "verse": 9,
+        "text": "我使你的额像金钢钻，比火石更硬。他们虽是悖逆之家，你不要怕他们，也不要因他们的脸色惊惶。」"
+      },
+      {
+        "reference": "Genesis 15:1",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 15,
+        "verse": 1,
+        "text": "这事以后，耶和华在异象中有话对亚伯兰说：「亚伯兰，你不要惧怕！我是你的盾牌，必大大的赏赐你。」"
+      },
+      {
+        "reference": "Genesis 21:17",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 21,
+        "verse": 17,
+        "text": "神听见童子的声音；神的使者从天上呼叫夏甲说：「夏甲，你为何这样呢？不要害怕，神已经听见童子的声音了。"
+      },
+      {
+        "reference": "Genesis 26:24",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 26,
+        "verse": 24,
+        "text": "当夜耶和华向他显现，说：「我是你父亲亚伯拉罕的神，不要惧怕！因为我与你同在，要赐福给你，并要为我仆人亚伯拉罕的缘故，使你的后裔繁多。」"
+      },
+      {
+        "reference": "Genesis 35:17",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 35,
+        "verse": 17,
+        "text": "正在艰难的时候，收生婆对她说：「不要怕，你又要得一个儿子了。」"
+      },
+      {
+        "reference": "Genesis 43:23",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 43,
+        "verse": 23,
+        "text": "家宰说：「你们可以放心，不要害怕，是你们的神和你们父亲的神赐给你们财宝在你们的口袋里；你们的银子，我早已收了。」他就把西缅带出来，交给他们。"
+      },
+      {
+        "reference": "Genesis 46:3",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 46,
+        "verse": 3,
+        "text": "神说：「我是神，就是你父亲的神。你下埃及去不要害怕，因为我必使你在那里成为大族。"
+      },
+      {
+        "reference": "Genesis 50:19",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 50,
+        "verse": 19,
+        "text": "约瑟对他们说：「不要害怕，我岂能代替神呢？"
+      },
+      {
+        "reference": "Genesis 50:21",
+        "bookSlug": "genesis",
+        "book": "Genesis",
+        "bookZh": "创世记",
+        "testament": "OT",
+        "chapter": 50,
+        "verse": 21,
+        "text": "现在你们不要害怕，我必养活你们和你们的妇人、孩子。」于是约瑟用亲爱的话安慰他们。"
+      },
+      {
+        "reference": "Haggai 2:5",
+        "bookSlug": "haggai",
+        "book": "Haggai",
+        "bookZh": "哈该书",
+        "testament": "OT",
+        "chapter": 2,
+        "verse": 5,
+        "text": "这是照着你们出埃及我与你们立约的话。那时，我的灵住在你们中间，你们不要惧怕。」"
+      },
+      {
+        "reference": "Isaiah 10:24",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 10,
+        "verse": 24,
+        "text": "所以，主万军之耶和华如此说：「住锡安我的百姓啊，亚述王虽然用棍击打你，又照埃及的样子举杖攻击你，你却不要怕他。"
+      },
+      {
+        "reference": "Isaiah 35:4",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 35,
+        "verse": 4,
+        "text": "对胆怯的人说：你们要刚强，不要惧怕。看哪，你们的神必来报仇，必来施行极大的报应；他必来拯救你们。"
+      },
+      {
+        "reference": "Isaiah 37:6",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 37,
+        "verse": 6,
+        "text": "以赛亚对他们说：「要这样对你们的主人说，耶和华如此说：『你听见亚述王的仆人亵渎我的话，不要惧怕。"
+      },
+      {
+        "reference": "Isaiah 40:9",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 40,
+        "verse": 9,
+        "text": "报好信息给锡安的啊，你要登高山；报好信息给耶路撒冷的啊，你要极力扬声。扬声不要惧怕，对犹大的城邑说：看哪，你们的神！"
+      },
+      {
+        "reference": "Isaiah 41:10",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 41,
+        "verse": 10,
+        "text": "你不要害怕，因为我与你同在；不要惊惶，因为我是你的神。我必坚固你，我必帮助你；我必用我公义的右手扶持你。"
+      },
+      {
+        "reference": "Isaiah 41:13",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 41,
+        "verse": 13,
+        "text": "因为我耶和华你的神必搀扶你的右手，对你说：不要害怕！我必帮助你。"
+      },
+      {
+        "reference": "Isaiah 41:14",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 41,
+        "verse": 14,
+        "text": "你这虫雅各和你们以色列人，不要害怕！耶和华说：我必帮助你。你的救赎主就是以色列的圣者。"
+      },
+      {
+        "reference": "Isaiah 43:1",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 43,
+        "verse": 1,
+        "text": "雅各啊，创造你的耶和华，以色列啊，造成你的那位，现在如此说：你不要害怕！因为我救赎了你。我曾提你的名召你，你是属我的。"
+      },
+      {
+        "reference": "Isaiah 43:5",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 43,
+        "verse": 5,
+        "text": "不要害怕，因我与你同在；我必领你的后裔从东方来，又从西方招聚你。"
+      },
+      {
+        "reference": "Isaiah 44:2",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 44,
+        "verse": 2,
+        "text": "造作你，又从你出胎造就你，并要帮助你的耶和华如此说：我的仆人雅各，我所拣选的耶书仑哪，不要害怕！"
+      },
+      {
+        "reference": "Isaiah 44:8",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 44,
+        "verse": 8,
+        "text": "你们不要恐惧，也不要害怕。我岂不是从上古就说明指示你们吗？并且你们是我的见证！除我以外，岂有真神吗？诚然没有磐石，我不知道一个！"
+      },
+      {
+        "reference": "Isaiah 51:7",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 51,
+        "verse": 7,
+        "text": "知道公义、将我训诲存在心中的民，要听我言！不要怕人的辱骂，也不要因人的毁谤惊惶。"
+      },
+      {
+        "reference": "Isaiah 54:4",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 54,
+        "verse": 4,
+        "text": "不要惧怕，因你必不致蒙羞；也不要抱愧，因你必不致受辱。你必忘记幼年的羞愧，不再记念你寡居的羞辱。"
+      },
+      {
+        "reference": "Isaiah 8:12",
+        "bookSlug": "isaiah",
+        "book": "Isaiah",
+        "bookZh": "以赛亚书",
+        "testament": "OT",
+        "chapter": 8,
+        "verse": 12,
+        "text": "「这百姓说同谋背叛，你们不要说同谋背叛。他们所怕的，你们不要怕，也不要畏惧。"
+      },
+      {
+        "reference": "Jeremiah 1:8",
+        "bookSlug": "jeremiah",
+        "book": "Jeremiah",
+        "bookZh": "耶利米书",
+        "testament": "OT",
+        "chapter": 1,
+        "verse": 8,
+        "text": "你不要惧怕他们，因为我与你同在，要拯救你。这是耶和华说的。"
+      },
+      {
+        "reference": "Jeremiah 10:5",
+        "bookSlug": "jeremiah",
+        "book": "Jeremiah",
+        "bookZh": "耶利米书",
+        "testament": "OT",
+        "chapter": 10,
+        "verse": 5,
+        "text": "他好像棕树，是旋成的，不能说话，不能行走，必须有人抬着。你们不要怕他；他不能降祸，也无力降福。"
+      },
+      {
+        "reference": "Jeremiah 30:10",
+        "bookSlug": "jeremiah",
+        "book": "Jeremiah",
+        "bookZh": "耶利米书",
+        "testament": "OT",
+        "chapter": 30,
+        "verse": 10,
+        "text": "故此，耶和华说：我的仆人雅各啊，不要惧怕；以色列啊，不要惊惶；因我要从远方拯救你，从被掳到之地拯救你的后裔；雅各必回来得享平靖安逸，无人使他害怕。"
+      },
+      {
+        "reference": "Jeremiah 40:9",
+        "bookSlug": "jeremiah",
+        "book": "Jeremiah",
+        "bookZh": "耶利米书",
+        "testament": "OT",
+        "chapter": 40,
+        "verse": 9,
+        "text": "沙番的孙子亚希甘的儿子基大利向他们和属他们的人起誓说：「不要怕服事迦勒底人，只管住在这地，服事巴比伦王，就可以得福。"
+      },
+      {
+        "reference": "Jeremiah 42:11",
+        "bookSlug": "jeremiah",
+        "book": "Jeremiah",
+        "bookZh": "耶利米书",
+        "testament": "OT",
+        "chapter": 42,
+        "verse": 11,
+        "text": "不要怕你们所怕的巴比伦王。』」耶和华说：「不要怕他！因为我与你们同在，要拯救你们脱离他的手。"
+      },
+      {
+        "reference": "Jeremiah 46:27",
+        "bookSlug": "jeremiah",
+        "book": "Jeremiah",
+        "bookZh": "耶利米书",
+        "testament": "OT",
+        "chapter": 46,
+        "verse": 27,
+        "text": "我的仆人雅各啊，不要惧怕！以色列啊，不要惊惶！因我要从远方拯救你，从被掳到之地拯救你的后裔。雅各必回来，得享平靖安逸，无人使他害怕。"
+      },
+      {
+        "reference": "Jeremiah 46:28",
+        "bookSlug": "jeremiah",
+        "book": "Jeremiah",
+        "bookZh": "耶利米书",
+        "testament": "OT",
+        "chapter": 46,
+        "verse": 28,
+        "text": "我的仆人雅各啊，不要惧怕！因我与你同在。我要将我所赶你到的那些国灭绝净尽，却不将你灭绝净尽，倒要从宽惩治你，万不能不罚你〔不罚你：或作以你为无罪〕。这是耶和华说的。"
+      },
+      {
+        "reference": "Joel 2:21",
+        "bookSlug": "joel",
+        "book": "Joel",
+        "bookZh": "约珥书",
+        "testament": "OT",
+        "chapter": 2,
+        "verse": 21,
+        "text": "地土啊，不要惧怕；要欢喜快乐，因为耶和华行了大事。"
+      },
+      {
+        "reference": "Joel 2:22",
+        "bookSlug": "joel",
+        "book": "Joel",
+        "bookZh": "约珥书",
+        "testament": "OT",
+        "chapter": 2,
+        "verse": 22,
+        "text": "田野的走兽啊，不要惧怕；因为，旷野的草发生，树木结果，无花果树、葡萄树也都效力。"
+      },
+      {
+        "reference": "John 12:15",
+        "bookSlug": "john",
+        "book": "John",
+        "bookZh": "约翰福音",
+        "testament": "NT",
+        "chapter": 12,
+        "verse": 15,
+        "text": "锡安的民〔原文作女子〕哪，不要惧怕！你的王骑着驴驹来了。"
+      },
+      {
+        "reference": "John 6:20",
+        "bookSlug": "john",
+        "book": "John",
+        "bookZh": "约翰福音",
+        "testament": "NT",
+        "chapter": 6,
+        "verse": 20,
+        "text": "耶稣对他们说：「是我，不要怕！」"
+      },
+      {
+        "reference": "Joshua 1:9",
+        "bookSlug": "joshua",
+        "book": "Joshua",
+        "bookZh": "约书亚记",
+        "testament": "OT",
+        "chapter": 1,
+        "verse": 9,
+        "text": "我岂没有吩咐你么？你当刚强壮胆！不要惧怕，也不要惊惶；因为你无论往那里去，耶和华你的神必与你同在。」"
+      },
+      {
+        "reference": "Joshua 10:25",
+        "bookSlug": "joshua",
+        "book": "Joshua",
+        "bookZh": "约书亚记",
+        "testament": "OT",
+        "chapter": 10,
+        "verse": 25,
+        "text": "约书亚对他们说：「你们不要惧怕，也不要惊惶。应当刚强壮胆，因为耶和华必这样待你们所要攻打的一切仇敌。」"
+      },
+      {
+        "reference": "Joshua 10:8",
+        "bookSlug": "joshua",
+        "book": "Joshua",
+        "bookZh": "约书亚记",
+        "testament": "OT",
+        "chapter": 10,
+        "verse": 8,
+        "text": "耶和华对约书亚说：「不要怕他们；因为我已将他们交在你手里，他们无一人能在你面前站立得住。」"
+      },
+      {
+        "reference": "Joshua 8:1",
+        "bookSlug": "joshua",
+        "book": "Joshua",
+        "bookZh": "约书亚记",
+        "testament": "OT",
+        "chapter": 8,
+        "verse": 1,
+        "text": "耶和华对约书亚说：「不要惧怕，也不要惊惶。你起来，率领一切兵丁上艾城去，我已经把艾城的王和他的民、他的城，并他的地，都交在你手里。"
+      },
+      {
+        "reference": "Judges 4:18",
+        "bookSlug": "judges",
+        "book": "Judges",
+        "bookZh": "士师记",
+        "testament": "OT",
+        "chapter": 4,
+        "verse": 18,
+        "text": "雅亿出来迎接西西拉，对他说：「请我主进来，不要惧怕。」西西拉就进了她的帐棚。雅亿用被将他遮盖。"
+      },
+      {
+        "reference": "Judges 6:23",
+        "bookSlug": "judges",
+        "book": "Judges",
+        "bookZh": "士师记",
+        "testament": "OT",
+        "chapter": 6,
+        "verse": 23,
+        "text": "耶和华对他说：「你放心，不要惧怕，你必不至死。」"
+      },
+      {
+        "reference": "Lamentations 3:57",
+        "bookSlug": "lamentations",
+        "book": "Lamentations",
+        "bookZh": "耶利米哀歌",
+        "testament": "OT",
+        "chapter": 3,
+        "verse": 57,
+        "text": "我求告你的日子，你临近我，说：不要惧怕！"
+      },
+      {
+        "reference": "Luke 1:13",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 1,
+        "verse": 13,
+        "text": "天使对他说：「撒迦利亚，不要害怕，因为你的祈祷已经被听见了。你的妻子以利沙伯要给你生一个儿子，你要给他起名叫约翰。"
+      },
+      {
+        "reference": "Luke 1:30",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 1,
+        "verse": 30,
+        "text": "天使对她说：「马利亚，不要怕！你在神面前已经蒙恩了。"
+      },
+      {
+        "reference": "Luke 12:32",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 12,
+        "verse": 32,
+        "text": "你们这小群，不要惧怕，因为你们的父乐意把国赐给你们。"
+      },
+      {
+        "reference": "Luke 12:4",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 12,
+        "verse": 4,
+        "text": "「我的朋友，我对你们说，那杀身体以后不能再作甚么的，不要怕他们。"
+      },
+      {
+        "reference": "Luke 12:7",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 12,
+        "verse": 7,
+        "text": "就是你们的头发，也都被数过了。不要惧怕，你们比许多麻雀还贵重！」"
+      },
+      {
+        "reference": "Luke 2:10",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 2,
+        "verse": 10,
+        "text": "那天使对他们说：「不要惧怕！我报给你们大喜的信息，是关乎万民的；"
+      },
+      {
+        "reference": "Luke 5:10",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 5,
+        "verse": 10,
+        "text": "他的伙伴西庇太的儿子雅各、约翰，也是这样。耶稣对西门说：「不要怕！从今以后，你要得人了。」"
+      },
+      {
+        "reference": "Luke 8:50",
+        "bookSlug": "luke",
+        "book": "Luke",
+        "bookZh": "路加福音",
+        "testament": "NT",
+        "chapter": 8,
+        "verse": 50,
+        "text": "耶稣听见就对他说：「不要怕，只要信！你的女儿就必得救。」"
+      },
+      {
+        "reference": "Mark 5:36",
+        "bookSlug": "mark",
+        "book": "Mark",
+        "bookZh": "马可福音",
+        "testament": "NT",
+        "chapter": 5,
+        "verse": 36,
+        "text": "耶稣听见所说的话，就对管会堂的说：「不要怕，只要信！」"
+      },
+      {
+        "reference": "Mark 6:50",
+        "bookSlug": "mark",
+        "book": "Mark",
+        "bookZh": "马可福音",
+        "testament": "NT",
+        "chapter": 6,
+        "verse": 50,
+        "text": "因为他们都看见了他，且甚惊慌。耶稣连忙对他们说：「你们放心！是我，不要怕！」"
+      },
+      {
+        "reference": "Matthew 1:20",
+        "bookSlug": "matthew",
+        "book": "Matthew",
+        "bookZh": "马太福音",
+        "testament": "NT",
+        "chapter": 1,
+        "verse": 20,
+        "text": "正思念这事的时候，有主的使者向他梦中显现，说：「大卫的子孙约瑟，不要怕！只管娶过你的妻子马利亚来，因她所怀的孕是从圣灵来的。"
+      },
+      {
+        "reference": "Matthew 10:26",
+        "bookSlug": "matthew",
+        "book": "Matthew",
+        "bookZh": "马太福音",
+        "testament": "NT",
+        "chapter": 10,
+        "verse": 26,
+        "text": "「所以，不要怕他们；因为掩盖的事没有不露出来的，隐藏的事没有不被人知道的。"
+      },
+      {
+        "reference": "Matthew 10:28",
+        "bookSlug": "matthew",
+        "book": "Matthew",
+        "bookZh": "马太福音",
+        "testament": "NT",
+        "chapter": 10,
+        "verse": 28,
+        "text": "那杀身体不能杀灵魂的，不要怕他们；惟有能把身体和灵魂都灭在地狱里的，正要怕他。"
+      },
+      {
+        "reference": "Matthew 10:31",
+        "bookSlug": "matthew",
+        "book": "Matthew",
+        "bookZh": "马太福音",
+        "testament": "NT",
+        "chapter": 10,
+        "verse": 31,
+        "text": "所以，不要惧怕，你们比许多麻雀还贵重！」"
+      },
+      {
+        "reference": "Matthew 14:27",
+        "bookSlug": "matthew",
+        "book": "Matthew",
+        "bookZh": "马太福音",
+        "testament": "NT",
+        "chapter": 14,
+        "verse": 27,
+        "text": "耶稣连忙对他们说：「你们放心！是我，不要怕！」"
+      },
+      {
+        "reference": "Matthew 17:7",
+        "bookSlug": "matthew",
+        "book": "Matthew",
+        "bookZh": "马太福音",
+        "testament": "NT",
+        "chapter": 17,
+        "verse": 7,
+        "text": "耶稣进前来，摸他们，说：「起来，不要害怕！」"
+      },
+      {
+        "reference": "Matthew 28:10",
+        "bookSlug": "matthew",
+        "book": "Matthew",
+        "bookZh": "马太福音",
+        "testament": "NT",
+        "chapter": 28,
+        "verse": 10,
+        "text": "耶稣对她们说：「不要害怕！你们去告诉我的弟兄，叫他们往加利利去，在那里必见我。」"
+      },
+      {
+        "reference": "Matthew 28:5",
+        "bookSlug": "matthew",
+        "book": "Matthew",
+        "bookZh": "马太福音",
+        "testament": "NT",
+        "chapter": 28,
+        "verse": 5,
+        "text": "天使对妇女说：「不要害怕！我知道你们是寻找那钉十字架的耶稣。"
+      },
+      {
+        "reference": "Nehemiah 4:14",
+        "bookSlug": "nehemiah",
+        "book": "Nehemiah",
+        "bookZh": "尼希米记",
+        "testament": "OT",
+        "chapter": 4,
+        "verse": 14,
+        "text": "我察看了，就起来对贵胄、官长，和其余的人说：「不要怕他们！当记念主是大而可畏的。你们要为弟兄、儿女、妻子、家产争战。」"
+      },
+      {
+        "reference": "Numbers 14:9",
+        "bookSlug": "numbers",
+        "book": "Numbers",
+        "bookZh": "民数记",
+        "testament": "OT",
+        "chapter": 14,
+        "verse": 9,
+        "text": "但你们不可背叛耶和华，也不要怕那地的居民；因为他们是我们的食物，并且荫庇他们的已经离开他们。有耶和华与我们同在，不要怕他们！」"
+      },
+      {
+        "reference": "Numbers 21:34",
+        "bookSlug": "numbers",
+        "book": "Numbers",
+        "bookZh": "民数记",
+        "testament": "OT",
+        "chapter": 21,
+        "verse": 34,
+        "text": "耶和华对摩西说：「不要怕他！因我已将他和他的众民，并他的地，都交在你手中；你要待他像从前待住希实本的亚摩利王西宏一般。」"
+      },
+      {
+        "reference": "Proverbs 3:25",
+        "bookSlug": "proverbs",
+        "book": "Proverbs",
+        "bookZh": "箴言",
+        "testament": "OT",
+        "chapter": 3,
+        "verse": 25,
+        "text": "忽然来的惊恐，不要害怕；恶人遭毁灭，也不要恐惧。"
+      },
+      {
+        "reference": "Psalms 49:16",
+        "bookSlug": "psalms",
+        "book": "Psalms",
+        "bookZh": "诗篇",
+        "testament": "OT",
+        "chapter": 49,
+        "verse": 16,
+        "text": "见人发财、家室增荣的时候，你不要惧怕；"
+      },
+      {
+        "reference": "Revelation 1:17",
+        "bookSlug": "revelation",
+        "book": "Revelation",
+        "bookZh": "启示录",
+        "testament": "NT",
+        "chapter": 1,
+        "verse": 17,
+        "text": "我一看见，就仆倒在他脚前，像死了一样。他用右手按着我，说：「不要惧怕！我是首先的，我是末后的，"
+      },
+      {
+        "reference": "Ruth 3:11",
+        "bookSlug": "ruth",
+        "book": "Ruth",
+        "bookZh": "路得记",
+        "testament": "OT",
+        "chapter": 3,
+        "verse": 11,
+        "text": "女儿啊，现在不要惧怕，凡你所说的，我必照着行；我本城的人都知道你是个贤德的女子。"
+      },
+      {
+        "reference": "Zechariah 8:13",
+        "bookSlug": "zechariah",
+        "book": "Zechariah",
+        "bookZh": "撒迦利亚书",
+        "testament": "OT",
+        "chapter": 8,
+        "verse": 13,
+        "text": "犹大家和以色列家啊，你们从前在列国中怎样成为可咒诅的；照样，我要拯救你们，使人称你们为有福的〔或作：使你们叫人得福〕。你们不要惧怕，手要强壮。」"
+      },
+      {
+        "reference": "Zechariah 8:15",
+        "bookSlug": "zechariah",
+        "book": "Zechariah",
+        "bookZh": "撒迦利亚书",
+        "testament": "OT",
+        "chapter": 8,
+        "verse": 15,
+        "text": "现在我照样定意施恩与耶路撒冷和犹大家，你们不要惧怕。"
+      },
+      {
+        "reference": "Zephaniah 3:16",
+        "bookSlug": "zephaniah",
+        "book": "Zephaniah",
+        "bookZh": "西番雅书",
+        "testament": "OT",
+        "chapter": 3,
+        "verse": 16,
+        "text": "当那日，必有话向耶路撒冷说：不要惧怕！锡安哪；不要手软！"
+      }
+    ]
+  }
+}
